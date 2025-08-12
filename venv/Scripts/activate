@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\vikash\vikash_pr\flask\doClinic\venv"
+VIRTUAL_ENV="D:\vikash\vikash_pr\githubPro\maakamakhyahomepathicclinic\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
