@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    @media print {
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+        body * {
+            visibility: hidden;
+        }
+        #printArea, #printArea * {
+            visibility: visible;
+        }
+        #printArea {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        .no-print {
+            display: none !important;
+        }
+    }
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    .detail-col {
+        flex: 1;
+        padding-right: 15px;
+        font-size: 15px;
+    }
+    .detail-col strong {
+        display: inline-block;
+        min-width: 90px;
+    }
+</style>
+
+<div class="card shadow p-4" id="printArea"
+     style="max-width: 900px; margin: auto; font-size: 14px; font-family: Arial, sans-serif; display: flex; flex-direction: column; height: 100%;">
+
+    <!-- Clinic Header with Logo -->
+    <div style="flex: 1;">
+        <div style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <!-- Logo Column -->
+             <!--
+            <div style="flex: 0 0 100px; display: flex; align-items: flex-start; justify-content: center;">
+                <img src="{{ url_for('static', filename='images/homeopathy_logo.jpg') }}" 
+                     alt="Homeopathy Logo" 
+                     style="max-height: 80px; width: auto;">
+            </div>
+        -->
+            <!-- Text Column -->
+            <div style="flex: 1; text-align: center;">
+                <h2 style="margin-bottom: 5px; font-weight: bold; color: green;">
+                  <img src="{{ url_for('static', filename='images/homeopathy_logo.jpg') }}" 
+                     alt="Homeopathy Logo" 
+                     style="max-height: 80px; width: auto;">   Maa Kamakhya Arogya Homeopathic Clinic
+                </h2>
+                <p style="margin: 0; font-size: 16px; font-weight: 600;">Dr. Sandhya</p>
+                <p style="font-size: 12px; margin: 5px 0;">
+                    For normal treatment, medicine charges only.<br>
+                    Critical treatment consultation fee ₹300.<br>
+                    शुल्क: ₹300 (for critical cases)
+                </p>
+            </div>
+        </div>
+
+        <!-- Full width line -->
+        <hr style="border: 1px solid #000; margin: 5px 0 15px 0;">
+
+        <!-- 3 Column Layout -->
+        <div class="detail-row">
+            <div class="detail-col"><strong>Name:</strong></div>
+            <div class="detail-col"><strong>Age:</strong></div>
+            <div class="detail-col"><strong>Gender:</strong></div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-col"><strong>Contact:</strong></div>
+            <div class="detail-col"><strong>Patient Id:</strong></div>
+            <div class="detail-col"><strong>Date:</strong></div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-col" style="flex: 2;"><strong>Address:</strong></div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-col" style="flex: 1;"><strong>C.C.</strong></div>
+        </div>
+    </div>
+
+    <!-- Doctor Signature -->
+    <div style="margin-top: auto; text-align: right; font-size: 13px;">
+        <div style="border-top: 1px solid #000; width: 150px; text-align: center; margin-left: auto; padding-top: 2px;">
+            Doctor's Signature
+        </div>
+    </div>
+
+</div>
+
+<!-- Buttons (Not Printed) -->
+<div class="text-center mt-4 no-print">
+    <button onclick="printDiv()" class="btn btn-primary me-2">🖨 Print</button>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home</a>
+</div>
+
+<script>
+function printDiv() {
+    window.print();
+}
+</script>
+
+{% endblock %}

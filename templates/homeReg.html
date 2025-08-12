@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="clinic-header">
+    <h1 class="text-success">
+      <img src="{{ url_for('static', filename='images/homeopathy_logo.jpg') }}" alt="Homeopathy Logo" style="max-height: 80px; width: auto;"> 
+      Maa Kamakhya Arogya Homeopathic Clinic</h1>
+    <h4>Dr. Sandhya</h4>
+    <p>For normal treatment: Medicine charges only.<br>
+    For critical treatment: ₹300 (शुल्क: तीन सौ)</p>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success text-center">{{ messages[0] }}</div>
+  {% endif %}
+{% endwith %}
+
+<div class="d-flex justify-content-center gap-3">
+    <a href="/register" class="btn btn-primary btn-lg">Register Patient</a>
+    <a href="/list" class="btn btn-warning btn-lg">Patient List</a>
+    <a href="/detail" class="btn btn-info btn-lg">Search Patient Detail</a>
+    <a href="/offlineRegister" class="btn btn-danger btn-lg">offline Register</a>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Patient List</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Date</th><th>details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in patients %}
+        <tr>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>{{ p[3] }}</td>
+            <td>{{ p[4] }}</td>
+            <td>{{ p[7] }}</td>
+            <td>
+                <a href="/detaillist/{{ p[0] }}" class="btn btn-info btn-sm">View</a>
+            </td>
+            <td>
+                <a href="/print/{{ p[0] }}" class="btn btn-danger btn-sm">print</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

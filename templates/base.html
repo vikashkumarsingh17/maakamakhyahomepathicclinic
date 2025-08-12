@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maa Kamakhya Clinic</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .clinic-header { text-align: center; margin-bottom: 20px; }
+        .clinic-logo { height: 80px; }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">🏠 Home</a>
+        <div>
+            <a href="/register" class="btn btn-light btn-sm me-2">Register Patient</a>
+            <a href="/list" class="btn btn-light btn-sm me-2">Patient List</a>
+            <a href="/detail" class="btn btn-light btn-sm">Search Detail</a>
+            <a href="/offlineRegister" class="btn btn-light btn-sm">offline Register</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

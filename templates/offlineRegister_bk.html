@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    @media print {
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+        body * {
+            visibility: hidden;
+        }
+        #printArea, #printArea * {
+            visibility: visible;
+        }
+        #printArea {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .no-print {
+            display: none !important;
+        }
+    }
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+    .detail-col {
+        flex: 1;
+        padding-right: 15px;
+        font-size: 15px;
+    }
+    .detail-col strong {
+        display: inline-block;
+        min-width: 90px;
+    }
+</style>
+
+<div class="card shadow p-4" id="printArea" style="max-width: 900px; margin: auto; font-size: 14px; font-family: Arial, sans-serif; min-height: 1050px; display: flex; flex-direction: column; justify-content: space-between;">
+
+    <!-- Clinic Header -->
+    <div>
+        <div class="text-center mb-4">
+            <h2 style="margin-bottom: 5px; font-weight: bold;">Maa Kamakhya Arogya Homeopathic Clinic</h2>
+            <p style="margin: 0; font-size: 16px; font-weight: 600;">Dr. Sandhya</p>
+            <p style="font-size: 12px; margin: 5px 0;">
+                For normal treatment, medicine charges only.<br>
+                Critical treatment consultation fee ₹300.<br>
+                शुल्क: ₹300 (for critical cases)
+            </p>
+            <hr>
+        </div>
+
+        <!-- 3 Column Layout -->
+        <div class="detail-row">
+            <div class="detail-col"><strong>Name:</strong></div>
+            <div class="detail-col"><strong>Age:</strong></div>
+            <div class="detail-col"><strong>Gender:</strong></div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-col"><strong>Contact:</strong></div>
+            <div class="detail-col"><strong>Patient ID:</strong></div>
+            <div class="detail-col"><strong>Date:</strong></div>
+        </div>
+
+        <div class="detail-row">
+            <div class="detail-col" style="flex: 2;"><strong>Address:</strong></div>
+            <div class="detail-col" style="flex: 1;"><strong>Problem:</strong></div>
+        </div>
+    </div>
+
+    <!-- Doctor Signature -->
+    <div class="d-flex justify-content-end" style="font-size: 13px; margin-top: 20px;">
+        <div style="border-top: 1px solid #000; width: 150px; text-align: center; padding-top: 2px;">
+            Doctor's Signature
+        </div>
+    </div>
+
+</div>
+
+<!-- Buttons (Not Printed) -->
+<div class="text-center mt-4 no-print">
+    <button onclick="printDiv()" class="btn btn-primary me-2">🖨 Print</button>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home</a>
+</div>
+
+<script>
+function printDiv() {
+    window.print();
+}
+</script>
+
+{% endblock %}
